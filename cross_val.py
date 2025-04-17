@@ -20,7 +20,7 @@ import logging
 def get_args():
     parser = argparse.ArgumentParser()
     parser.add_argument("--representation-index", type=int, default=1)
-    parser.add_argument("--n-worker", type=int, default=1)
+    parser.add_argument("--n-worker", type=int, default=3)
     parser.add_argument("--filename", type=str, default="benbow")
     args = parser.parse_args()
     return args
@@ -35,7 +35,7 @@ log_path = os.path.join(pPath,'logs/cross_val/{}'.format(filename))
 
 if not os.path.exists(log_path):
     logger.info('Creating Logging Folder')
-    os.mkdir(log_path)
+    os.makedirs(log_path)
 
 log_filename = os.path.join(log_path,'{}_{}.log'.format(filename,idx))
 setup_logging(log_filename=log_filename)
@@ -103,7 +103,7 @@ def main():
 
         list_train_params.append(train_params)
 
-    if len(list_train_params)>1 and args.n_worker > 1:
+    if len(list_train_params)>1:
         n_worker = multiprocessing.cpu_count()
         n_worker = min(args.n_worker,n_worker)
 
