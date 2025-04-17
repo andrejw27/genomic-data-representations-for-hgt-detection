@@ -44,7 +44,7 @@ run `predictGI.py` that takes 2 arguments:
 * **genomes_path**: path to the folder of genomes in fasta files
 * **output_dest**: path to store the predictions which will be stores in outputs
 
-**Note: unzip the model in** `utils/models` **to run this script**
+**Note: unzip the model in** `utils/models` **before running this command below**
 
 ```
 python predictGI.py --genomes-path "dataset/genomes/benbow_test" --output-dest "outputs/predictions"
