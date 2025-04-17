@@ -11,9 +11,26 @@ We found that genomic surveillance benefits from task-specific genome data repre
 
 ---
 
+**Initial steps:**
+
+1. Clone this repo:
+
+```
+git clone git@github.com:andrejw27/genomic-data-representations-for-hgt-detection.git
+```
+
+2. `cd` into the root directory (`genomic-data-representations-for-hgt-detection/`)
+3. Install [conda](https://docs.conda.io/projects/conda/en/latest/user-guide/install/linux.html): `conda/install.sh`
+4. Create conda environment: `sh conda/create_env.sh`
+5. Activate conda environment: `conda activate genomic-data-rep`
+6. **Optional**: Remove conda environment (if necessary): `sh conda/remove_env.sh`
+
+---
+
+
 **- Cross-validation**:
 
-run `cross_val.py` which requires 3 arguments:
+run `./cross_val.py` which requires 3 arguments:
 
 * **representation_index**: to select which data representations to be used in cross-validation
 * **n_worker**: number of workers to execute the script for parallel processing
@@ -31,7 +48,7 @@ python cross_val.py --representation-index 1 --n-worker 5 --filename benbow
 
 **- Hyperparameter tuning**:
 
-run  `hyperparameter_tuning.py` which requires 2 arguments, namely filename and n_worker
+run  `./hyperparameter_tuning.py` which requires 2 arguments, namely filename and n_worker
 
 the list of data representations and machine learning models for each data set is provided in the script
 
@@ -47,7 +64,7 @@ python hyperparameter_tuning.py --n-worker 5 --filename benbow
 
 **- Predict genomic islands (GIs):**
 
-run `predictGI.py` that takes 2 arguments:
+run `./predictGI.py` that takes 2 arguments:
 
 * **genomes_path**: path to the folder of genomes in fasta files
 * **output_dest**: path to store the predictions which will be stores in outputs
@@ -63,7 +80,7 @@ python predictGI.py --genomes-path "dataset/genomes/benbow_test" --output-dest "
 
 **- Evaluate the baselines**:
 
-run `evaluation.py` to measure performance of baselines on either benbow test or literature evaluation data set
+run `./evaluation.py` to measure performance of baselines on either benbow test or literature evaluation data set
 
 **Steps**:
 
@@ -75,7 +92,7 @@ python evaluation.py --result-type "literature"
 
 **- Transform data sets into different data representations:**
 
-run `transform_data.py` to convert data sets into different representations. This is necessary to calculate the correlations between data representations. Use `adjusted_rv.R` script to calculate the correlations.
+run `./transform_data.py` to convert data sets into different representations. This is necessary to calculate the correlations between data representations. Use `adjusted_rv.R` script to calculate the correlations.
 
 **Steps**:
 
