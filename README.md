@@ -11,7 +11,7 @@ We found that genomic surveillance benefits from task-specific genome data repre
 
 ---
 
-**Cross-validation**:
+**- Cross-validation**:
 
 run `cross_val.py` which requires 3 arguments:
 
@@ -19,13 +19,17 @@ run `cross_val.py` which requires 3 arguments:
 * **n_worker**: number of workers to execute the script for parallel processing
 * **filename**: filename of the data set (benbow, islandpick, gicluster, rvm)
 
-note that files in `dataset/train_data` are stored in .zip format due to large size.
+**Steps**:
+
+* unzip train data files in `dataset/train_data` before running the code below
+* change the filename to either benbow, islandpick, gicluster, or rvm to run the cross-validation on each data set
+* change the representation-index to a number from 1 to 5 as the data representations are split into 5 lists.
 
 ```
 python cross_val.py --representation-index 1 --n-worker 5 --filename benbow
 ```
 
-**Hyperparameter tuning**:
+**- Hyperparameter tuning**:
 
 run  `hyperparameter_tuning.py` which requires 2 arguments, namely filename and n_worker
 
@@ -33,34 +37,49 @@ the list of data representations and machine learning models for each data set i
 
 the search space for the hyperparameters is given in file `utils/hpo.py` in `task_hyperparameter_tuning` function
 
+**Steps**:
+
+* change the filename to either benbow, islandpick, gicluster, or rvm to run the hyperparameter tuning on each data set
+
 ```
 python hyperparameter_tuning.py --n-worker 5 --filename benbow
 ```
 
-**Predict genomic islands (GIs):**
+**- Predict genomic islands (GIs):**
 
 run `predictGI.py` that takes 2 arguments:
 
 * **genomes_path**: path to the folder of genomes in fasta files
 * **output_dest**: path to store the predictions which will be stores in outputs
 
-**Note: unzip the model in** `utils/models` **before running this command below**
+**Steps:**
+
+* unzip the model in `utils/models` before running the code below
+* change to genomes_path to any folder of your genomes with fasta format
 
 ```
 python predictGI.py --genomes-path "dataset/genomes/benbow_test" --output-dest "outputs/predictions"
 ```
 
-**Evaluate the baselines**:
+**- Evaluate the baselines**:
 
 run `evaluation.py` to measure performance of baselines on either benbow test or literature evaluation data set
+
+**Steps**:
+
+* change the result_type to either test or literature to calculate the evaluation results on benbow test or literature data set, respectively
 
 ```
 python evaluation.py --result-type "literature"
 ```
 
-**Transform data sets into different data representations:**
+**- Transform data sets into different data representations:**
 
 run `transform_data.py` to convert data sets into different representations. This is necessary to calculate the correlations between data representations. Use `adjusted_rv.R` script to calculate the correlations.
+
+**Steps**:
+
+* change the filename to either benbow, islandpick, gicluster, or rvm to transform each data set
 
 ```
 python transform_data.py --filename benbow
