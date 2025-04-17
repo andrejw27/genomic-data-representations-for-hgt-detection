@@ -39,11 +39,11 @@ run `./cross_val.py` which requires 3 arguments:
 **Steps**:
 
 * unzip train data files in `dataset/train_data` before running the code below
-* change the filename to either benbow, islandpick, gicluster, or rvm to run the cross-validation on each data set
-* change the representation-index to a number from 1 to 5 as the data representations are split into 5 lists.
+* change the value for `--filename` to either `benbow, islandpick, gicluster, or rvm` to run the cross-validation on each data set
+* change the value for `--representation-index` to a number from `1 to 5` as the data representations are split into 5 lists.
 
 ```
-python cross_val.py --representation-index 1 --n-worker 5 --filename benbow
+python cross_val.py --representation-index 1 --n-worker 5 --filename "benbow"
 ```
 
 **- Hyperparameter tuning**:
@@ -56,10 +56,10 @@ the search space for the hyperparameters is given in file `utils/hpo.py` in `tas
 
 **Steps**:
 
-* change the filename to either benbow, islandpick, gicluster, or rvm to run the hyperparameter tuning on each data set
+* change the value for `--filename` to either `benbow, islandpick, gicluster, or rvm` to run the hyperparameter tuning on each data set
 
 ```
-python hyperparameter_tuning.py --n-worker 5 --filename benbow
+python hyperparameter_tuning.py --n-worker 5 --filename "benbow"
 ```
 
 **- Predict genomic islands (GIs):**
@@ -72,7 +72,7 @@ run `./predictGI.py` that takes 2 arguments:
 **Steps:**
 
 * unzip the model in `utils/models` before running the code below
-* change to genomes_path to any folder of your genomes with fasta format
+* change value for `--genomes-path` to any folder of your genomes with fasta format
 
 ```
 python predictGI.py --genomes-path "dataset/genomes/benbow_test" --output-dest "outputs/predictions"
@@ -84,7 +84,7 @@ run `./evaluation.py` to measure performance of baselines on either benbow test 
 
 **Steps**:
 
-* change the result_type to either test or literature to calculate the evaluation results on benbow test or literature data set, respectively
+* change the value for  `--result-type` to either `test or literature` to calculate the evaluation results on benbow test or literature data set, respectively
 
 ```
 python evaluation.py --result-type "literature"
@@ -96,10 +96,10 @@ run `./transform_data.py` to convert data sets into different representations. T
 
 **Steps**:
 
-* change the filename to either benbow, islandpick, gicluster, or rvm to transform each data set
+* change the value for `--filename` to either `benbow, islandpick, gicluster, or rvm` to transform each data set
 
 ```
-python transform_data.py --filename benbow
+python transform_data.py --filename "benbow"
 ```
 
 ---
