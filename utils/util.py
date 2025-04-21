@@ -20,7 +20,7 @@ tqdm.pandas()
 import os, sys, re
 from pathlib import Path
 file_path = os.path.split(os.path.realpath(__file__))[0]
-pPath = Path(file_path).parent
+pPath = Path(file_path)
 sys.path.append(pPath)
 
 import logging 
